@@ -1,0 +1,42 @@
+@import "./css/variables.css";
+@import "./css/buttons.css";
+@import "./css/fonts.css";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+body {
+  height: 100%;
+  font-family: var(--font-primary);
+  font-size: var(--fs-preset-6);
+  line-height: var(--lh-preset-6);
+  background-color: var(--color-netural-100);
+  font-weight: 500;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
