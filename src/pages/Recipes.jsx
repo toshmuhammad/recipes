@@ -71,7 +71,7 @@ export default function Recipes() {
 
   const handleSaveRecipe = async () => {
     if (!newRecipe.title || !newRecipe.slug || !newRecipe.image) {
-      alert("Iltimos barcha majburiy maydonlarni to‘ldiring!");
+      alert("Inputlarni to‘ldiring");
       return;
     }
 

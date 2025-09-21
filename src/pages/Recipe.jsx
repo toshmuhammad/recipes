@@ -18,7 +18,7 @@ export default function Recipe() {
   }, [id]);
 
   if (!recipe) {
-    return <p>Loading...</p>;
+    return <p>Zip qilib ishlatsangiz xatoliksiz ishlaydi githubdan kirsez hatolik beryabdi</p>;
   }
 
   const randomRecipes = recipes
