@@ -24,20 +24,12 @@ export default function Recipes() {
     instructions: "",
   });
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/recipes")
-  //     .then((res) => res.json())
-  //     .then((data) => setRecipes(data))
-  //     .catch((err) => console.error("Error:", err));
-  // }, []);
-
   useEffect(() => {
-  fetch(process.env.PUBLIC_URL + "/data/db.json")
-    .then((res) => res.json())
-    .then((data) => setRecipes(data.recipes))
-    .catch((err) => console.error("Error:", err));
-}, []);
-
+    fetch("http://localhost:3000/recipes")
+      .then((res) => res.json())
+      .then((data) => setRecipes(data))
+      .catch((err) => console.error("Error:", err));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("search", search);
