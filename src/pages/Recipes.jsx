@@ -181,13 +181,13 @@ export default function Recipes() {
           </button>
 
           <nav className="main-nav" aria-label="Main navigation">
-            <a href="#" className="nav-link active">
+            <a href="/" className="nav-link">
               Home
             </a>
             <a href="./About" className="nav-link">
               About
             </a>
-            <a href="./Recipes" className="nav-link">
+            <a href="./Recipes" className="nav-link active">
               Recipes
             </a>
           </nav>
@@ -200,13 +200,13 @@ export default function Recipes() {
         {open && (
           <div className="mobile-menu">
             <nav className="main-nav1" aria-label="Main navigation">
-              <a href="#" className="nav-link active">
+              <a href="/" className="nav-linkx">
                 Home
               </a>
               <a href="./About" className="nav-link">
                 About
               </a>
-              <a href="./Recipes" className="nav-link">
+              <a href="./Recipes" className="nav-link active">
                 Recipes
               </a>
             </nav>
