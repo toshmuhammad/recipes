@@ -11,6 +11,8 @@ export default function Recipes() {
   const [showCookDropdown, setShowCookDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [open, setOpen] = useState(false);
+
 
   const [newRecipe, setNewRecipe] = useState({
     title: "",
@@ -170,21 +172,59 @@ export default function Recipes() {
             <img src="/images/logo.svg" alt="Logo" />
           </a>
 
+          <button
+            className="menu-toggle"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation"
+          >
+            <i className="fa-solid fa-bars"></i>
+          </button>
+
           <nav className="main-nav" aria-label="Main navigation">
-            <a href="/" className="nav-link">Home</a>
-            <a href="/about" className="nav-link">About</a>
-            <a href="/recipes" className="nav-link active">Recipes</a>
+            <a href="#" className="nav-link active">
+              Home
+            </a>
+            <a href="./About" className="nav-link">
+              About
+            </a>
+            <a href="./Recipes" className="nav-link">
+              Recipes
+            </a>
           </nav>
 
-          <a href="#" className="btn btn-browse">Browse recipes</a>
+          <a href="./Recipes" className="btn btn-browse">
+            Browse recipes
+          </a>
         </div>
+
+        {open && (
+          <div className="mobile-menu">
+            <nav className="main-nav1" aria-label="Main navigation">
+              <a href="#" className="nav-link active">
+                Home
+              </a>
+              <a href="./About" className="nav-link">
+                About
+              </a>
+              <a href="./Recipes" className="nav-link">
+                Recipes
+              </a>
+            </nav>
+            <a href="./Recipes" className="btn btn-browse">
+              Browse recipes
+            </a>
+          </div>
+        )}
       </header>
 
       <main className="home" role="main">
         <section className="intro">
           <h1>Explore our simple, healthy recipes</h1>
           <p>
-            Discover eight quick, whole-food dishes that fit real-life schedules and taste amazing. Use the search bar to find a recipe by name or ingredient, or simply scroll the list and let something delicious catch your eye.
+            Discover eight quick, whole-food dishes that fit real-life schedules
+            and taste amazing. Use the search bar to find a recipe by name or
+            ingredient, or simply scroll the list and let something delicious
+            catch your eye.
           </p>
         </section>
 
@@ -249,7 +289,11 @@ export default function Recipes() {
 
           <div className="search-wrapper">
             <div className="search-bar">
-              <img src="/images/icon-search.svg" alt="search" className="search-icon" />
+              <img
+                src="/images/icon-search.svg"
+                alt="search"
+                className="search-icon"
+              />
               <input
                 type="text"
                 placeholder="Search by name or ingredient…"
@@ -257,7 +301,9 @@ export default function Recipes() {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <button className="btn-add" onClick={() => setShowModal(true)}>+Add</button>
+            <button className="btn-add" onClick={() => setShowModal(true)}>
+              +Add
+            </button>
           </div>
         </section>
 
@@ -274,20 +320,48 @@ export default function Recipes() {
                   <h3>{recipe.title}</h3>
                   <p>{recipe.overview}</p>
                   <p>
-                    <img className="iconn" width={17} height={17} src="/images/icon-servings.svg" alt="" />
+                    <img
+                      className="iconn"
+                      width={17}
+                      height={17}
+                      src="/images/icon-servings.svg"
+                      alt=""
+                    />
                     <strong>Servings:</strong> {recipe.servings}
                   </p>
                   <p>
-                    <img className="iconn" width={17} height={17} src="/images/icon-cook-time.svg" alt="" />
+                    <img
+                      className="iconn"
+                      width={17}
+                      height={17}
+                      src="/images/icon-cook-time.svg"
+                      alt=""
+                    />
                     <strong>Cook:</strong> {recipe.cookMinutes} mins{" "}
-                    <img className="iconn" width={17} height={17} src="/images/icon-prep-time.svg" alt="" />
+                    <img
+                      className="iconn"
+                      width={17}
+                      height={17}
+                      src="/images/icon-prep-time.svg"
+                      alt=""
+                    />
                     <strong>Prep:</strong> {recipe.prepMinutes} mins
                   </p>
 
                   {recipe.addedBy === "local" && (
                     <div className="edit-delete">
-                      <button className="btn-edit" onClick={() => handleEdit(recipe)}>🖋</button>
-                      <button className="btn-delete" onClick={() => handleDelete(recipe.id)}>✖</button>
+                      <button
+                        className="btn-edit"
+                        onClick={() => handleEdit(recipe)}
+                      >
+                        🖋
+                      </button>
+                      <button
+                        className="btn-delete"
+                        onClick={() => handleDelete(recipe.id)}
+                      >
+                        ✖
+                      </button>
                     </div>
                   )}
                   <Link to={`/recipe/${recipe.id}`} className="btn btn-view">
@@ -306,9 +380,15 @@ export default function Recipes() {
         <div className="container footer-inner">
           <div className="made-with">Made with ❤️ and 🥑</div>
           <div className="socials">
-            <a href="#"><img src="/images/icon-instagram.svg" alt="Instagram" /></a>
-            <a href="#"><img src="/images/icon-bluesky.svg" alt="Bluesky" /></a>
-            <a href="#"><img src="/images/icon-tiktok.svg" alt="Tiktok" /></a>
+            <a href="#">
+              <img src="/images/icon-instagram.svg" alt="Instagram" />
+            </a>
+            <a href="#">
+              <img src="/images/icon-bluesky.svg" alt="Bluesky" />
+            </a>
+            <a href="#">
+              <img src="/images/icon-tiktok.svg" alt="Tiktok" />
+            </a>
           </div>
         </div>
       </footer>
@@ -318,19 +398,75 @@ export default function Recipes() {
           <div className="modal">
             <h2>{editId ? "Edit Recipe" : "Add New Recipe"}</h2>
             <div className="modal-inputs">
-              <input name="title" placeholder="Title" value={newRecipe.title} onChange={handleChange} />
-              <input name="slug" placeholder="Slug" value={newRecipe.slug} onChange={handleChange} />
-              <input name="image" placeholder="Image URL" value={newRecipe.image} onChange={handleChange} />
-              <input name="overview" placeholder="Overview" value={newRecipe.overview} onChange={handleChange} />
-              <input name="servings" placeholder="Servings" value={newRecipe.servings} onChange={handleChange} />
-              <input name="prepMinutes" placeholder="Prep Minutes" value={newRecipe.prepMinutes} onChange={handleChange} />
-              <input name="cookMinutes" placeholder="Cook Minutes" value={newRecipe.cookMinutes} onChange={handleChange} />
-              <input name="ingredients" placeholder="Ingredients (comma separated)" value={newRecipe.ingredients} onChange={handleChange} />
-              <input name="instructions" placeholder="Instructions (comma separated)" value={newRecipe.instructions} onChange={handleChange} />
+              <input
+                name="title"
+                placeholder="Title"
+                value={newRecipe.title}
+                onChange={handleChange}
+              />
+              <input
+                name="slug"
+                placeholder="Slug"
+                value={newRecipe.slug}
+                onChange={handleChange}
+              />
+              <input
+                name="image"
+                placeholder="Image URL"
+                value={newRecipe.image}
+                onChange={handleChange}
+              />
+              <input
+                name="overview"
+                placeholder="Overview"
+                value={newRecipe.overview}
+                onChange={handleChange}
+              />
+              <input
+                name="servings"
+                placeholder="Servings"
+                value={newRecipe.servings}
+                onChange={handleChange}
+              />
+              <input
+                name="prepMinutes"
+                placeholder="Prep Minutes"
+                value={newRecipe.prepMinutes}
+                onChange={handleChange}
+              />
+              <input
+                name="cookMinutes"
+                placeholder="Cook Minutes"
+                value={newRecipe.cookMinutes}
+                onChange={handleChange}
+              />
+              <input
+                name="ingredients"
+                placeholder="Ingredients (comma separated)"
+                value={newRecipe.ingredients}
+                onChange={handleChange}
+              />
+              <input
+                name="instructions"
+                placeholder="Instructions (comma separated)"
+                value={newRecipe.instructions}
+                onChange={handleChange}
+              />
             </div>
             <div className="modal-actions">
-              <button onClick={handleSaveRecipe} className="btnn">{editId ? "Update" : "Add"}</button>
-              <button onClick={() => { setShowModal(false); setEditId(null); resetForm(); }} className="bttn">Cancel</button>
+              <button onClick={handleSaveRecipe} className="btnn">
+                {editId ? "Update" : "Add"}
+              </button>
+              <button
+                onClick={() => {
+                  setShowModal(false);
+                  setEditId(null);
+                  resetForm();
+                }}
+                className="bttn"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
