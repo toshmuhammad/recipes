@@ -200,7 +200,7 @@ export default function Recipes() {
         {open && (
           <div className="mobile-menu">
             <nav className="main-nav1" aria-label="Main navigation">
-              <a href="/" className="nav-linkx">
+              <a href="/" className="nav-link">
                 Home
               </a>
               <a href="./About" className="nav-link">
