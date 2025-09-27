@@ -248,25 +248,6 @@
         "Soliyev"
       ],
       "id": "1758265457101"
-    },
-    {
-      "id": "1758643201254",
-      "title": "salom",
-      "slug": "salom",
-      "image": {
-        "small": "https://avatars.githubusercontent.com/u/73601975?v=4"
-      },
-      "overview": "sallom",
-      "servings": "5",
-      "prepMinutes": "10",
-      "cookMinutes": "15",
-      "ingredients": [
-        "salom"
-      ],
-      "instructions": [
-        "salom"
-      ],
-      "addedBy": "local"
     }
   ]
 }
